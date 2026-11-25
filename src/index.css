@@ -39,17 +39,20 @@ body {
   border-color: #565758;
 }
 
-.correct {
+.tile.correct,
+.key.correct {
   background-color: #538d4e;
   border-color: #538d4e;
 }
 
-.present {
+.tile.present,
+.key.present {
   background-color: #b59f3b;
   border-color: #b59f3b;
 }
 
-.absent {
+.tile.absent,
+.key.absent {
   background-color: #3a3a3c;
   border-color: #3a3a3c;
 }

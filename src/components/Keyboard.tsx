@@ -21,7 +21,10 @@ function Keyboard({ letterStatuses, onKey }: KeyboardProps) {
               key={key}
               type="button"
               className={`key ${key.length > 1 ? 'wide' : ''} ${letterStatuses[key] ?? ''}`}
-              onClick={() => onKey(key)}
+              onClick={(event) => {
+                event.currentTarget.blur()
+                onKey(key)
+              }}
               aria-label={key}
             >
               {key === 'Backspace' ? '⌫' : key}

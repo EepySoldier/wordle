@@ -2,6 +2,8 @@
 
 Zgadujesz 5-literowe słowo w 6 próbach. Po każdej próbie litery zmieniają kolor: zielony to dobra litera na dobrym miejscu, żółty to litera ze słowa, ale na złym miejscu, szary to litera, której w słowie nie ma.
 
+Działa tu: https://wordle-rho-rust.vercel.app
+
 <img width="886" height="888" alt="image" src="https://github.com/user-attachments/assets/306e4293-54da-454b-8578-88edf5bbddb7" />
 
 <img width="1004" height="958" alt="image" src="https://github.com/user-attachments/assets/cc9607c2-bc60-4f0f-b71e-1d5d3374bf9c" />

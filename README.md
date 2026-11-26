@@ -1,32 +1,35 @@
-# React + TypeScript + Vite
+# Wordle
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Zgadujesz 5-literowe słowo w 6 próbach. Po każdej próbie litery zmieniają kolor: zielony to dobra litera na dobrym miejscu, żółty to litera ze słowa, ale na złym miejscu, szary to litera, której w słowie nie ma.
 
-Currently, two official plugins are available:
+## Co potrafi
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- losuje słowo z wbudowanej listy, działa w całości offline
+- wpisywanie z fizycznej klawiatury albo z klawiatury na ekranie
+- klawiatura na ekranie koloruje litery, które już padły
+- komunikat "Not enough letters", gdy słowo jest za krótkie
+- po wygranej albo przegranej pokazuje wynik i przycisk "Play again"
+- parę testów w Vitest
 
-## React Compiler
+## Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+React 19, TypeScript, Vite 8, Vitest, Oxlint.
 
-## Expanding the Oxlint configuration
+## Odpalenie
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+git clone https://github.com/EepySoldier/wordle.git
+cd wordle
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Testy: `npm test`.
+
+## Decyzje techniczne
+
+- **Vite zamiast Next.js**: gra działa w całości w przeglądarce, nie potrzebuje serwera, routingu ani pobierania danych, więc Next.js nic by tu nie dał
+- **Logika w jednym hooku**: cały stan gry siedzi w `useWordle`, a komponenty tylko go wyświetlają
+- **Ocena próby w czystej funkcji**: `evaluateGuess` najpierw zaznacza zielone litery, a dopiero potem żółte, żeby powtórzone litery nie dostawały koloru więcej razy, niż występują w słowie. To czysta funkcja, więc łatwo ją przetestować
+- **Kolory klawiatury liczone z historii prób**: nie trzymam ich w osobnym stanie, więc nie mogą rozjechać się z planszą
+- **Brak sprawdzania słownika**: lista słów jest krótka, więc przyjmuję dowolne 5 liter, żeby gra nie odrzucała prawdziwych słów

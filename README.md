@@ -13,7 +13,7 @@ Zgadujesz 5-literowe słowo w 6 próbach. Po każdej próbie litery zmieniają k
 
 ## Stack
 
-React 19, TypeScript, Vite 8, Vitest, Oxlint.
+React 19, TypeScript, Vite 8, Vitest
 
 ## Odpalenie
 
